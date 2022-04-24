@@ -1,0 +1,27 @@
+create pointer to current node
+while True: (could be a while depth <=)
+if root node is none:
+    ask for an animal
+    create root node with that animal (left child and right child are None)
+
+else:
+    start at root node
+    while node_has_children:
+        ask the question of the node:
+        appropriately move to the node
+    ask if the node animal is the anima
+    if yes:
+        yay!
+    else:
+        what kind of animal? (store in new_animal node)
+        new node for current_node's animal (call it old_animal)
+        ask for differentiating questinos between new_animal and current_node
+        plac the question in to the current node
+        ask the user whether the answer is yes or no for their new animal
+        assign children appropriately
+
+
+main():
+    creat TwentyQuestions Object
+    while True:
+        call guess_routine()
