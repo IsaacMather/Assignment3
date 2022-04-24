@@ -76,10 +76,62 @@ if __name__ == '__main__':
     while True:
         guessing_game.guess_routine()
 
-
-    #
-    # main():
-    #     creat TwentyQuestions Object
-    #     while True:
-    #         call guess_routine()
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+##Sample Run
+# /Users/isaacmather/PycharmProjects/Assignment3/venv/bin/python /Users/isaacmather/PycharmProjects/Assignment3/main.py
+#
+# ***Let's play! ***
+#
+# Think of a creature...
+# There are no creatures loaded, please tell me your creature. Cat
+# Thank you! Now we can play
+#
+# ***Let's play! ***
+#
+# Think of a creature...
+# Is this your creature: Cat (Y/N): N
+# What is your creature? Dog
+# Please enter a yes or no question that will distinguish Cat from Dog. Does it bark?
+# For your creature Dog, Does it bark?? (Y/N) Y
+# Thank you, I have added Dog to the database
+#
+# ***Let's play! ***
+#
+# Think of a creature...
+# Does it bark?
+# Please enter Y or NN
+# Is this your creature: Cat (Y/N): N
+# What is your creature? Giraffe
+# Please enter a yes or no question that will distinguish Cat from Giraffe. Does it have long legs?
+# For your creature Giraffe, Does it have long legs?? (Y/N) Y
+# Thank you, I have added Giraffe to the database
+#
+# ***Let's play! ***
+#
+# Think of a creature...
+# Does it bark?
+# Please enter Y or Nn
+# Does it have long legs?
+# Please enter Y or Ny
+# Is this your creature: Giraffe (Y/N): n
+# What is your creature? Spider
+# Please enter a yes or no question that will distinguish Giraffe from Spider. Does it have a long neck?
+# For your creature Spider, Does it have a long neck?? (Y/N) n
+# Thank you, I have added Spider to the database
+#
+# ***Let's play! ***
+#
+# Think of a creature...
+# Does it bark?
+# Please enter Y or Nn
+# Does it have long legs?
+# Please enter Y or Ny
+# Does it have a long neck?
+# Please enter Y or Ny
+# Is this your creature: Giraffe (Y/N): y
+# Excellent, thank you for playing!
+#
+# ***Let's play! ***
+#
+# Think of a creature...
+# Does it bark?
+# Please enter Y or N
