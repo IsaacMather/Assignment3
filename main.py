@@ -1,8 +1,16 @@
 
 class TwentyQuestions:
+    """Play the 20 questions game
+
+        Args:
+            None
+        Returns:
+            None
+    """
     def __init__(self):
         self._root = None
 
+    # guessing game funtion
     def guess_routine(self):
         steps = 0
         while steps <= 20:
@@ -11,10 +19,13 @@ class TwentyQuestions:
             print()
             print('Think of a creature...')
 
+            #check if the tree is empty, and if so, create first now
             if self._root is None:
                 creature = input("There are no creatures loaded, please tell me your creature. ")
                 print("Thank you! Now we can play.")
                 self._root = BinaryTreeNode(creature)
+
+            #if tree != empty, traverse tree, asking questions
             else:
                 current_node = self._root
                 while current_node.left_child:
@@ -28,10 +39,14 @@ class TwentyQuestions:
                         print("Incorrect answer, starting over")
                         return current_node
 
+                #guess if the node your traversal leads to is the creature
                 answer = input(f"Is this your creature: {current_node.data} (Y/N): ")
 
+                #if that is creature, print congrats and exit loop
                 if answer.upper() == 'Y':
                     print('Excellent, thank you for playing!')
+
+                #if not, gather new question, new animal, store reorder nodes
                 else:
                     # what kind of animal? (store in new_animal node)
                     new_animal = input("What is your creature? ")
@@ -51,6 +66,7 @@ class TwentyQuestions:
                     tree_decider = input(f"For your creature {new_animal}, "
                                          f"{new_question} (Y/N) ")
 
+                    #order the leaf nodes according to the users response
                     if tree_decider.upper() == 'Y':
                         current_node.left_child = new_animal_node
                         current_node.right_child = old_animal_node
@@ -60,11 +76,14 @@ class TwentyQuestions:
                     print(f"Thank you, I have added {new_animal} to the database")
 
 
-
-
-
 class BinaryTreeNode:
+    """Template class for node in a binary tree
 
+        Args:
+            data (any type): data to be stored in the node
+        Returns:
+            None
+    """
     def __init__(self, data):
         self.data = data
         self.left_child = None
@@ -72,7 +91,9 @@ class BinaryTreeNode:
 
 
 if __name__ == '__main__':
+
     guessing_game = TwentyQuestions()
+    #initiate guessing game routine
     while True:
         guessing_game.guess_routine()
 
