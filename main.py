@@ -12,68 +12,67 @@ class TwentyQuestions:
 
     # guessing game funtion
     def guess_routine(self):
-        steps = 0
-        while steps <= 20:
-            print()
-            print('***Let\'s play! ***')
-            print()
-            print('Think of a creature...')
 
-            #check if the tree is empty, and if so, create first now
-            if self._root is None:
-                creature = input("There are no creatures loaded, please tell me your creature. ")
-                print("Thank you! Now we can play.")
-                self._root = BinaryTreeNode(creature)
+        print()
+        print('***Let\'s play! ***')
+        print()
+        print('Think of a creature...')
 
-            #if tree != empty, traverse tree, asking questions
-            else:
-                current_node = self._root
-                while current_node.left_child:
-                    print(current_node.data)
-                    answer = input("Please enter Y or N ")
-                    if answer.upper() == 'Y':
-                        current_node = current_node.left_child
-                    elif answer.upper() == 'N':
-                        current_node = current_node.right_child
-                    else:
-                        print("Incorrect answer, starting over")
-                        return current_node
+        #check if the tree is empty, and if so, create first now
+        if self._root is None:
+            creature = input("There are no creatures loaded, please tell me your creature. ")
+            print("Thank you! Now we can play.")
+            self._root = BinaryTreeNode(creature)
 
-                #guess if the node your traversal leads to is the creature
-                answer = input(f"Is this your creature: {current_node.data} (Y/N): ")
-
-                #if that is creature, print congrats and exit loop
+        #if tree != empty, traverse tree, asking questions
+        else:
+            current_node = self._root
+            while current_node.left_child:
+                print(current_node.data)
+                answer = input("Please enter Y or N ")
                 if answer.upper() == 'Y':
-                    print('Excellent, thank you for playing!')
-
-                #if not, gather new question, new animal, store reorder nodes
+                    current_node = current_node.left_child
+                elif answer.upper() == 'N':
+                    current_node = current_node.right_child
                 else:
-                    # what kind of animal? (store in new_animal node)
-                    new_animal = input("What is your creature? ")
-                    new_animal_node = BinaryTreeNode(new_animal)
+                    print("Incorrect answer, starting over")
+                    return current_node
 
-                    # new node for current_node's animal (call it old_animal)
-                    old_animal_node = BinaryTreeNode(current_node.data)
+            #guess if the node your traversal leads to is the creature
+            answer = input(f"Is this your creature: {current_node.data} (Y/N): ")
 
-                    #ask for differentiating questinos between new_animal and current_node
-                    new_question = input(f"Please enter a yes or no question "
-                                         f"that will distinguish "
-                                         f"{current_node.data} from "
-                                         f"{new_animal}. ")
-                    #place the question in to the current node
-                    current_node.data = new_question
-                    #ask the user whether the answer is yes or no for their new animal
-                    tree_decider = input(f"For your creature {new_animal}, "
-                                         f"{new_question} (Y/N) ")
+            #if that is creature, print congrats and exit loop
+            if answer.upper() == 'Y':
+                print('Excellent, thank you for playing!')
 
-                    #order the leaf nodes according to the users response
-                    if tree_decider.upper() == 'Y':
-                        current_node.left_child = new_animal_node
-                        current_node.right_child = old_animal_node
-                    else:
-                        current_node.left_child = old_animal_node
-                        current_node.right_child = new_animal_node
-                    print(f"Thank you, I have added {new_animal} to the database")
+            #if not, gather new question, new animal, store reorder nodes
+            else:
+                # what kind of animal? (store in new_animal node)
+                new_animal = input("What is your creature? ")
+                new_animal_node = BinaryTreeNode(new_animal)
+
+                # new node for current_node's animal (call it old_animal)
+                old_animal_node = BinaryTreeNode(current_node.data)
+
+                #ask for differentiating questinos between new_animal and current_node
+                new_question = input(f"Please enter a yes or no question "
+                                     f"that will distinguish "
+                                     f"{current_node.data} from "
+                                     f"{new_animal}. ")
+                #place the question in to the current node
+                current_node.data = new_question
+                #ask the user whether the answer is yes or no for their new animal
+                tree_decider = input(f"For your creature {new_animal}, "
+                                     f"{new_question} (Y/N) ")
+
+                #order the leaf nodes according to the users response
+                if tree_decider.upper() == 'Y':
+                    current_node.left_child = new_animal_node
+                    current_node.right_child = old_animal_node
+                else:
+                    current_node.left_child = old_animal_node
+                    current_node.right_child = new_animal_node
+                print(f"Thank you, I have added {new_animal} to the database")
 
 
 class BinaryTreeNode:
